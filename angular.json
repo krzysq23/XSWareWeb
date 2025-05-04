@@ -5,7 +5,11 @@
   "projects": {
     "web_app": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -25,9 +29,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
+              "src/styles.scss",
               "src/assets/css/nucleo-icons.css",
-              "src/assets/css/custom.css"
+              "src/assets/scss/blk-design-system.scss"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -88,7 +92,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "src/assets/css/nucleo-icons.css",
+              "src/assets/scss/blk-design-system.scss"
             ],
             "scripts": []
           }
