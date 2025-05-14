@@ -31,6 +31,7 @@
             "styles": [
               "src/styles.scss",
               "src/assets/css/nucleo-icons.css",
+              "src/assets/css/custom.css",
               "src/assets/scss/blk-design-system.scss"
             ],
             "scripts": [],

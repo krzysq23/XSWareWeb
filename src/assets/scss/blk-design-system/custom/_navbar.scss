@@ -120,6 +120,9 @@
     color: $white;
     text-transform: capitalize;
     font-size: $font-paragraph;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     span {
       font-weight: $font-weight-bold;
     }

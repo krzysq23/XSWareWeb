@@ -1,13 +1,18 @@
 import { Component, HostListener} from '@angular/core';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
+import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+
 @Component({
   selector: 'app-navbar',
-  imports: [CollapseModule],
+  imports: [
+    CollapseModule,
+    BsDropdownModule
+  ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent{
+export class NavbarComponent {
   isCollapsed = true;
   title = 'XSWare Solution';
   @HostListener("window:scroll", ["$event"])

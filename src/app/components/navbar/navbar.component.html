@@ -10,9 +10,9 @@
         placement="bottom"
         href="/home"
         target="_blank"
-        tooltip="Designed and Coded by Creative Tim"
       >
-      <img class="title-logo" src="assets/img/icon.png" /> {{ title }}
+      <img class="title-logo" src="assets/img/icon.png" /> 
+      <span>{{ title }}</span>
       </a>
       <button
         aria-controls="navigation-index"
@@ -35,7 +35,7 @@
     >
       <div class="navbar-collapse-header">
         <div class="row">
-          <div class="col-6 collapse-brand"><a> BLK• </a></div>
+          <div class="col-6 collapse-brand"><a> XSW• </a></div>
           <div class="col-6 collapse-close text-right">
             <button
               aria-controls="navigation-index"
@@ -55,37 +55,31 @@
         <li class="nav-item p-0">
           <a
             class="nav-link"
-            href="https://twitter.com/CreativeTim"
+            href="/home"
             placement="bottom"
-            target="_blank"
-            tooltip="Follow us on Twitter"
+            tooltip="Kontakt"
           >
-            <i class="fab fa-twitter"> </i>
-            <p class="d-lg-none d-xl-none">Twitter</p>
+            Home
           </a>
         </li>
         <li class="nav-item p-0">
           <a
             class="nav-link"
-            href="#"
+            href="/about"
             placement="bottom"
-            target="_blank"
-            tooltip="Like us on Facebook"
+            tooltip="Kontakt"
           >
-            <i class="fab fa-facebook-square"> </i>
-            <p class="d-lg-none d-xl-none">Facebook</p>
+            O Firmie
           </a>
         </li>
         <li class="nav-item p-0">
           <a
             class="nav-link"
-            href="#"
+            href="/contact"
             placement="bottom"
-            target="_blank"
-            tooltip="Follow us on Instagram"
+            tooltip="Kontakt"
           >
-            <i class="fab fa-instagram"> </i>
-            <p class="d-lg-none d-xl-none">Instagram</p>
+            Kontakt
           </a>
         </li>
         <li class="dropdown nav-item" dropdown>
@@ -95,23 +89,14 @@
             dropdownToggle
             href="javascript:void(0)"
           >
-            <i class="fa fa-cogs d-lg-none d-xl-none"> </i> Getting started
+            <i class="fa fa-cogs d-lg-none d-xl-none"> </i> Menu
           </a>
-          <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-            <a
-              class="dropdown-item"
-              href="#"
-            >
-              <i class="tim-icons icon-paper"> </i> Documentation
+          <div class="dropdown-menu dropdown-with-icons dropdown-menu-right" *dropdownMenu>
+            <a class="dropdown-item" href="/register">
+              <i class="tim-icons icon-bullet-list-67"> </i> Rejestracja
             </a>
-            <a class="dropdown-item" href="#">
-              <i class="tim-icons icon-bullet-list-67"> </i> Register Page
-            </a>
-            <a class="dropdown-item" href="#">
-              <i class="tim-icons icon-image-02"> </i> Landing Page
-            </a>
-            <a class="dropdown-item" href="#">
-              <i class="tim-icons icon-single-02"> </i> Profile Page
+            <a class="dropdown-item" href="/login">
+              <i class="tim-icons icon-single-02"> </i> Logowanie
             </a>
           </div>
         </li>

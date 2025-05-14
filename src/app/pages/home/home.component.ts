@@ -1,4 +1,4 @@
-import { Component, Inject, AfterViewInit, OnDestroy } from "@angular/core";
+import { Component, AfterViewInit, OnDestroy } from "@angular/core";
 import { PlatformService } from '../../services/platform.service';
 
 @Component({
