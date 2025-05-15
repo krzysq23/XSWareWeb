@@ -6,9 +6,18 @@
   .card-header img {
     position: absolute;
     margin-left: -50px;
-    margin-top: -150px;
+    margin-top: -240px;
     border-radius: 20%;
-    width: 350px;
+    width: 420px;
+  }
+
+  @media (max-width: 460px) {
+    .card-header img {
+      margin-top: -200px;
+    }
+    .card-title {
+      font-size: 3.4em !important;
+    }
   }
 
   .header {
@@ -42,10 +51,9 @@
 
     .card-title {
       position: relative;
-      font-size: 5em;
+      font-size: 4.2em;
       font-weight: 900;
-      color: $black;
-      text-transform: lowercase;
+      color: $white;
       margin-left: -5px;
       z-index: 1;
     }

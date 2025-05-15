@@ -88,7 +88,8 @@
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
   border-top: $card-border-width solid $card-border-color;
-
+  text-align: center;
+  
   &:last-child {
     @include border-radius(
       0 0 $card-inner-border-radius $card-inner-border-radius
