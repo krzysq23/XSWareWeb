@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpInterceptor, HttpRequest, HttpHandler  } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environments';
+import { NotificationService } from '../services/notification.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
   private apiUrl = environment.apiUrl;
+  private loggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient, 
+    private router: Router, 
+    private notificationService: NotificationService
+  ) {}
+
+  isLoggedIn$ = this.loggedIn.asObservable();
 
   login(credentials: { email: string; password: string }): Observable<any> {
     return this.http.post<{ token: string, name: string }>(
@@ -20,18 +28,25 @@ export class AuthService {
       tap(response => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('userName', response.name);
-        this.router.navigateByUrl('/profile');
+        this.loggedIn.next(true);
+        window.location.assign('/profile');
       })
     );
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    this.notificationService.setShowLogoutToast(true);
+    window.location.assign('/home?logout=true');
   }
 
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+  checkAuth(): void {
+    console.log("checkAuth");
+    const token = localStorage.getItem('token');
+    this.loggedIn.next(!!token);
   }
+
 }
 
 

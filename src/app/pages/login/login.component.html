@@ -42,16 +42,18 @@
                         </div>
                         <input
                           id="email" 
-                          formControlName="email"
                           class="form-control"
+                          type="email"
+                          formControlName="email"
+                          name="email"
                           placeholder="Email"
-                          type="text"
                           (focus)="focus = true"
                           (blur)="focus = false"
                           [tooltip]="getEmailError()"
                           triggers="manual"
                           [isOpen]="!!email && email.touched && email.invalid"
                           container="body"
+                          autocomplete="email"
                         />
                       </div>
                       <div

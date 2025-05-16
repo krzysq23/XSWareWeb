@@ -2,6 +2,7 @@ import { Component, Inject, Renderer2} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AuthService } from './services/auth.service';
 
 import { CommonModule } from '@angular/common';
 import { Location } from "@angular/common";
@@ -23,6 +24,7 @@ import { PLATFORM_ID } from '@angular/core';
 })
 export class AppComponent {
   constructor(
+    private authService: AuthService,
     private renderer: Renderer2,
     public location: Location,
     @Inject(DOCUMENT) private document: Document,
@@ -35,4 +37,8 @@ export class AppComponent {
     }
   }
   title = 'XSWare Solution';
+  
+  ngOnInit() {
+    this.authService.checkAuth();
+  }
 }

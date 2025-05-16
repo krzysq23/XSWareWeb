@@ -89,14 +89,27 @@
             href="javascript:void(0)"
           >
             <i class="tim-icons icon-single-02 d-xl-none"> </i>
+            <ng-container *ngIf="isLoggedIn;">
+              {{ UserName }}
+            </ng-container>
           </a>
           <div class="dropdown-menu dropdown-with-icons dropdown-menu-right" *dropdownMenu>
-            <a class="dropdown-item" href="/register">
-              <i class="tim-icons icon-bullet-list-67"> </i> Rejestracja
-            </a>
-            <a class="dropdown-item" href="/login">
-              <i class="tim-icons icon-badge"> </i> Logowanie
-            </a>
+            <ng-container *ngIf="isLoggedIn; else guest">
+              <a class="dropdown-item" href="/profile">
+                <i class="tim-icons icon-badge"> </i> Profil
+              </a>
+              <a class="dropdown-item" href="javascript:void(0)" (click)="logoutClick()">
+                <i class="fa fa-sign-out-alt"></i> Wyloguj
+              </a>
+            </ng-container>
+            <ng-template #guest>
+              <a class="dropdown-item" href="/register">
+                <i class="tim-icons icon-bullet-list-67"> </i> Rejestracja
+              </a>
+              <a class="dropdown-item" href="/login">
+                <i class="tim-icons icon-badge"> </i> Logowanie
+              </a>
+            </ng-template>
           </div>
         </li>
       </ul>

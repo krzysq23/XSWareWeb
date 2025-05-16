@@ -9,12 +9,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/home">Home </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register"> Rejestracja </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login"> Logowanie </a>
-                    </li>
+                    <ng-container *ngIf="isLoggedIn; else guest">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile"> Profil </a>
+                        </li>
+                    </ng-container>
+                    <ng-template #guest>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register"> Rejestracja </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login"> Logowanie </a>
+                        </li>
+                    </ng-template>
                 </ul>
             </div>
             <div class="col-md-3">

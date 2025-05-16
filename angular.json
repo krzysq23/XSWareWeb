@@ -32,7 +32,8 @@
               "src/styles.scss",
               "src/assets/css/nucleo-icons.css",
               "src/assets/css/custom.css",
-              "src/assets/scss/blk-design-system.scss"
+              "src/assets/scss/blk-design-system.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [],
             "outputMode": "static"
@@ -97,7 +98,9 @@
             "styles": [
               "src/styles.scss",
               "src/assets/css/nucleo-icons.css",
-              "src/assets/scss/blk-design-system.scss"
+              "src/assets/css/custom.css",
+              "src/assets/scss/blk-design-system.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           }
