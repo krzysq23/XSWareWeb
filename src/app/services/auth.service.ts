@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpInterceptor, HttpRequest, HttpHandler  } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environments';
@@ -9,12 +10,17 @@ export class AuthService {
 
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post<{ token: string } > (this.apiUrl + environment.loginEndpoint, credentials).pipe(
-      tap((res: { token: string; }) => {
-        localStorage.setItem('token', res.token);
+    return this.http.post<{ token: string, name: string }>(
+        this.apiUrl + environment.loginEndpoint, 
+        credentials
+    ).pipe(
+      tap(response => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('userName', response.name);
+        this.router.navigateByUrl('/profile');
       })
     );
   }

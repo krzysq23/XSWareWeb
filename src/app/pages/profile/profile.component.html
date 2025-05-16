@@ -1,0 +1,63 @@
+<div class="wrapper">
+  <div class="main">
+    <div class="section section-basic" id="basic-elements">
+      <img class="path" src="assets/img/path1.png" />
+
+      <div class="container">
+        <h2 class="title">Profil</h2>
+        <div class="card">
+          <div class="card-header">
+            <tabset class="nav-tabs-danger">
+              <tab>
+                <ng-template tabHeading>
+                  <i class="tim-icons icon-spaceship"> </i> Informacje
+                </ng-template>
+                <div class="user-info-tab">
+                  <div class="col-md-12 user-info-photo">
+                    <div class="row">
+                      <img
+                        alt="Circle image"
+                        class="img-fluid rounded-circle shadow"
+                        src="assets/img/james.jpg"
+                      />
+                      <h3>{{ FirstName }} {{ LastName }}</h3>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <h5><b> Imię: </b> {{ FirstName }}</h5>
+                    </div>
+                    <div class="row">
+                      <h5><b> Nazwisko: </b> {{ LastName }}</h5>
+                    </div>
+                    <div class="row">
+                      <h5><b> Email: </b> {{ Email }}</h5>
+                    </div>
+                    <div class="row">
+                      <h5><b> Telefon: </b> {{ Phone }}</h5>
+                    </div>
+                  </div>
+                </div>
+              </tab>
+              <tab>
+                <ng-template tabHeading>
+                  <i class="tim-icons icon-settings-gear-63"> </i> Ustawienia
+                </ng-template>
+                <p>
+                  Completely synergize resource taxing relationships via premier
+                  niche markets. Professionally cultivate one-to-one customer
+                  service with robust ideas. <br />
+
+                  <br />
+
+                  Dynamically innovate resource-leveling customer service for
+                  state of the art customer service.
+                </p>
+              </tab>
+            </tabset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

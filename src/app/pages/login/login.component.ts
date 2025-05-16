@@ -62,7 +62,7 @@ export class LoginComponent  {
     if (this.loginForm.valid) {
       this.auth.login(this.loginForm.value).subscribe({
         next: (res: any) => {
-          console.log('Zalogowano:', res);
+          console.log('Zalogowano!');
         },
         error: (err: any) => {
           this.showAlert(err.error != null ? err.error : err.message);

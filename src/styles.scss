@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+.tab-pane {
+    padding: 10px 20px;
+}
+
+.user-info-photo {
+    margin-bottom: 40px;
+}
+
+.user-info-photo .row {
+    gap: 15px;
+    align-items: center;
+}
+
+.user-info-photo img {
+    width: 100px;
+}
+
