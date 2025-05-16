@@ -7,70 +7,100 @@
             <div class="col-md-10 ml-auto col-xl-6 mr-auto">
               <div class="square square-7" id="square7"></div>
               <div class="square square-8" id="square8"></div>
-              <div class="card card-register">
-                <div class="card-header">
-                  <img
-                    alt="Card image"
-                    class="card-img"
-                    src="assets/img/square1-red.png"
-                  />
-  
-                  <h4 class="card-title">Logowanie</h4>
-                </div>
-                <div class="card-body">
-                  <form class="form">
-                    <div
-                      class="input-group"
-                      [ngClass]="{ 'input-group-focus': focus === true }"
-                    >
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">
-                          <i class="tim-icons icon-email-85"> </i>
+              <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+                <div class="card card-register">
+                  <div class="card-header">
+                    <img
+                      alt="Card image"
+                      class="card-img"
+                      src="assets/img/square1-red.png"
+                    />
+    
+                    <h4 class="card-title">Logowanie</h4>
+                  </div>
+                  <div class="card-body">
+                    <alert
+                        class="alert-with-icon"
+                        [type]="'danger alert-with-icon'"
+                        [dismissible]="true"
+                        [hidden]="!alert.visible"
+                      >
+                      <span class="tim-icons icon-alert-circle-exc" data-notify="icon"> </span>
+                      <span>
+                        <b> Błąd podczas logowania - </b> {{ alert.message }}
+                      </span>
+                    </alert>
+                    <form class="form">
+                      <div
+                        class="input-group"
+                        [ngClass]="{ 'input-group-focus': focus === true }"
+                      >
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="tim-icons icon-email-85"> </i>
+                          </div>
                         </div>
+                        <input
+                          id="email" 
+                          formControlName="email"
+                          class="form-control"
+                          placeholder="Email"
+                          type="text"
+                          (focus)="focus = true"
+                          (blur)="focus = false"
+                          [tooltip]="getEmailError()"
+                          triggers="manual"
+                          [isOpen]="!!email && email.touched && email.invalid"
+                          container="body"
+                        />
                       </div>
-                      <input
-                        class="form-control"
-                        placeholder="Email"
-                        type="text"
-                        (focus)="focus = true"
-                        (blur)="focus = false"
-                      />
-                    </div>
-                    <div
-                      class="input-group"
-                      [ngClass]="{ 'input-group-focus': focus1 === true }"
-                    >
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">
-                          <i class="tim-icons icon-lock-circle"> </i>
+                      <div
+                        class="input-group"
+                        [ngClass]="{ 'input-group-focus': focus1 === true }"
+                      >
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="tim-icons icon-lock-circle"> </i>
+                          </div>
                         </div>
+                        <input
+                          id="password"
+                          formControlName="password"
+                          class="form-control"
+                          placeholder="Hasło"
+                          type="password"
+                          (focus)="focus1 = true"
+                          (blur)="focus1 = false"
+                          [tooltip]="getPasswordError()"
+                          triggers="manual"
+                          [isOpen]="!!password && password.touched && password.invalid"
+                          container="body"
+
+                        />
                       </div>
-                      <input
-                        class="form-control"
-                        placeholder="Hasło"
-                        type="text"
-                        (focus)="focus1 = true"
-                        (blur)="focus1 = false"
-                      />
-                    </div>
-                    <div class="form-check text-left">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" />
-  
-                        <span class="form-check-sign"> </span> Zapamiętaj mnie
-                      </label>
-                    </div>
-                  </form>
+                      <div class="form-check text-left">
+                        <label class="form-check-label">
+                          <input 
+                            id="remember"
+                            formControlName="remember"
+                            class="form-check-input" 
+                            type="checkbox" 
+                          />
+                          <span class="form-check-sign"> </span> Zapamiętaj mnie
+                        </label>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="card-footer">
+                    <button
+                      class="btn btn-danger btn-round btn-lg"
+                      type="submit"
+                    >
+                      Zaloguj się
+                    </button>
+                  </div>
                 </div>
-                <div class="card-footer">
-                  <a
-                    class="btn btn-danger btn-round btn-lg"
-                    href="javascript:void(0)"
-                  >
-                    Zaloguj się
-                  </a>
-                </div>
-              </div>
+              </form>
             </div>
           </div>
           <div class="register-bg"></div>
