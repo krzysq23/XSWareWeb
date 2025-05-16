@@ -47,6 +47,10 @@ export class AuthService {
     this.loggedIn.next(!!token);
   }
 
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
 }
 
 
