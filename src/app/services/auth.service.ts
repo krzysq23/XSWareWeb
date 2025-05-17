@@ -45,7 +45,21 @@ export class AuthService {
   checkAuth(): void {
     console.log("checkAuth");
     const token = localStorage.getItem('token');
-    this.loggedIn.next(!!token);
+    if(token) {
+      this.loggedIn.next(true);
+      this.dataService.tokenValid().subscribe({
+        next: (response) => {
+          console.log(response)
+        },
+        error: (err) => {
+          this.loggedIn.next(false);
+          localStorage.removeItem('token');
+          localStorage.removeItem('userName');
+          window.location.assign('/home?logout=true');
+        }
+      });
+    }
+
   }
 
 }

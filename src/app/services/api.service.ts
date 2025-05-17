@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHandlerFn, HttpRequest, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environments';
 import { catchError } from 'rxjs/operators';
@@ -21,10 +21,8 @@ export class ApiService {
     );
   }
 
-  tokenValid() {
-    this.http.get(this.apiUrl + environment.loginEndpoint).subscribe(data => {
-      console.log(data)
-    });
+  tokenValid() : Observable<any> {
+    return this.http.get(this.apiUrl + environment.tokenValidEndpoint).pipe();
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -36,18 +34,16 @@ export class ApiService {
     }
   }
   
+  
 }
 
-@Injectable()
-export class Apinterceptor implements HttpInterceptor {
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const authReq = req.clone({
-        headers: req.headers.set('Authorization', `Bearer ${token}`)
-      });
-      return next.handle(authReq);
-    }
-    return next.handle(req);
+export function authUnterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const authReq = req.clone({
+      headers: req.headers.set('Authorization', `Bearer ${token}`)
+    });
+    return next(authReq);
   }
+  return next(req);
 }
