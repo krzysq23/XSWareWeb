@@ -62,14 +62,7 @@ export class LoginComponent  {
     this.submitted = true;
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
-      this.auth.login(this.loginForm.value).subscribe({
-        next: (res: any) => {
-          console.log('Zalogowano!');
-        },
-        error: (err: any) => {
-          this.showAlert(err.error != null ? err.error : err.message);
-        }
-      });
+      this.auth.login(this.loginForm.value)
     }
   }
 

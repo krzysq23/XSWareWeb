@@ -4,7 +4,7 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from '../services/auth.service';
+import { Apinterceptor } from '../services/api.service';
 import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useClass: Apinterceptor,
       multi: true
     },
     provideToastr()

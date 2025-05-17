@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import { PlatformService } from '../../services/platform.service';
 import { ToastrService } from 'ngx-toastr';
-import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +13,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private platformService: PlatformService,
     private route: ActivatedRoute, 
-    public toastr: ToastrService,
-    private notificationService: NotificationService
+    public toastr: ToastrService
   ) {}
   title = 'XSWare Solution';
 
@@ -27,7 +25,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           timeOut: 3000,
           positionClass: 'toast-bottom-right',
         });
-        this.notificationService.setShowLogoutToast(false);
       }
     });
   }
