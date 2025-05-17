@@ -20,6 +20,7 @@ import { AlertModule } from "ngx-bootstrap/alert";
 export class LoginComponent  {
   focus: any;
   focus1: any;
+  submitted = false;
   loginForm: FormGroup;
   alert = {
     message: '',
@@ -58,6 +59,7 @@ export class LoginComponent  {
   }
 
   onSubmit() {
+    this.submitted = true;
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
       this.auth.login(this.loginForm.value).subscribe({

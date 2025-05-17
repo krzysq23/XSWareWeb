@@ -7,19 +7,19 @@
             <div class="col-md-3">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">Home </a>
+                        <a class="nav-link" routerLink ="/home">Home </a>
                     </li>
                     <ng-container *ngIf="isLoggedIn; else guest">
                         <li class="nav-item">
-                            <a class="nav-link" href="/profile"> Profil </a>
+                            <a class="nav-link" routerLink="/profile"> Profil </a>
                         </li>
                     </ng-container>
                     <ng-template #guest>
                         <li class="nav-item">
-                            <a class="nav-link" href="/register"> Rejestracja </a>
+                            <a class="nav-link" routerLink="/register"> Rejestracja </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login"> Logowanie </a>
+                            <a class="nav-link" routerLink="/login"> Logowanie </a>
                         </li>
                     </ng-template>
                 </ul>
@@ -27,12 +27,12 @@
             <div class="col-md-3">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/contact">
+                        <a class="nav-link" routerLink="/contact">
                             Kontakt
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about">
+                        <a class="nav-link" routerLink="/about">
                             O Firmie
                         </a>
                     </li>
