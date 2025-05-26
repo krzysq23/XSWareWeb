@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../services/api.service';
+import { UserSessionService } from '../services/userSession.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -10,7 +11,8 @@ export class AuthService {
   
   constructor(
     private dataService: ApiService, 
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    private userSession: UserSessionService
   ) {}
 
   isLoggedIn$ = this.loggedIn.asObservable();
@@ -23,7 +25,12 @@ export class AuthService {
     this.dataService.userLogin(credentials).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.token);
-        localStorage.setItem('userName', response.name);
+        const user = {
+          email: response.email,
+          firstName: response.firstName,
+          lastName: response.lastName
+        };
+        this.userSession.setUser(user);
         this.loggedIn.next(true);
         window.location.assign('/profile');
       },
@@ -63,7 +70,7 @@ export class AuthService {
       this.loggedIn.next(true);
       this.dataService.tokenValid().subscribe({
         next: (response) => {
-          console.log(response)
+          // SUCCESS: Token is valid
         },
         error: (err) => {
           this.loggedIn.next(false);

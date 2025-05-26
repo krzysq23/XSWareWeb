@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { AuthService } from '../../services/auth.service';
+import { UserSessionService } from '../../services/userSession.service';
 
 @Component({
   selector: 'app-navbar',
@@ -20,12 +21,13 @@ export class NavbarComponent {
   isCollapsed = true;
   isLoggedIn = false;
   title = 'XSWare Solution';
-  UserName = localStorage.getItem('userName');
+  email = "";
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private userSession: UserSessionService) {
     this.authService.isLoggedIn$.subscribe(status => {
       this.isLoggedIn = status;
     });
+    this.email = userSession.email();
   }
 
   @HostListener("window:scroll", ["$event"])

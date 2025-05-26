@@ -27,7 +27,8 @@
     "nouislider": "14.6.3",
     "rxjs": "6.6.3",
     "tslib": "2.0.3",
-    "zone.js": "0.15."
+    "zone.js": "0.15.",
+    "ngx-cookie-service": "19.1.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.10",
