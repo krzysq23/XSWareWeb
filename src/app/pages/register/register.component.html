@@ -17,77 +17,133 @@
   
                   <h4 class="card-title">Rejestracja</h4>
                 </div>
-                <div class="card-body">
-                  <form class="form">
-                    <div
-                      class="input-group"
-                      [ngClass]="{ 'input-group-focus': focus === true }"
-                    >
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">
-                          <i class="tim-icons icon-single-02"> </i>
+                <form class="form" (ngSubmit)="onSubmit()" [formGroup]="registryForm" autocomplete="on">
+                  <div class="card-body">
+                      <div
+                        class="input-group"
+                        [ngClass]="{ 'input-group-focus': focus === true }"
+                      >
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="tim-icons icon-single-02"> </i>
+                          </div>
                         </div>
+                        <input
+                          id="firstName" 
+                          class="form-control"
+                          name="firstName"
+                          formControlName="firstName"
+                          placeholder="Imię"
+                          type="text"
+                          (focus)="focus = true"
+                          (blur)="focus = false"
+                          [tooltip]="getFirstNameError()"
+                          triggers="manual"
+                          [isOpen]="submitted && !!firstName && firstName.invalid"
+                          container="body" 
+                          maxlength="15"
+                        />
                       </div>
-                      <input
-                        class="form-control"
-                        placeholder="Imię i Nazwisko"
-                        type="text"
-                        (focus)="focus = true"
-                        (blur)="focus = false"
-                      />
-                    </div>
-                    <div
-                      class="input-group"
-                      [ngClass]="{ 'input-group-focus': focus1 === true }"
-                    >
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">
-                          <i class="tim-icons icon-email-85"> </i>
+                      <div
+                        class="input-group"
+                        [ngClass]="{ 'input-group-focus': focus1 === true }"
+                      >
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="tim-icons icon-single-02"> </i>
+                          </div>
                         </div>
+                        <input
+                          id="lastName"
+                          class="form-control"
+                          name="lastName"
+                          formControlName="lastName"
+                          placeholder="Nazwisko"
+                          type="text"
+                          (focus)="focus1 = true"
+                          (blur)="focus1 = false"
+                          [tooltip]="getLastNameError()"
+                          triggers="manual"
+                          [isOpen]="submitted && !!lastName && lastName.invalid"
+                          container="body" 
+                          maxlength="15"
+                        />
                       </div>
-                      <input
-                        class="form-control"
-                        placeholder="Email"
-                        type="text"
-                        (focus)="focus1 = true"
-                        (blur)="focus1 = false"
-                      />
-                    </div>
-                    <div
-                      class="input-group"
-                      [ngClass]="{ 'input-group-focus': focus2 === true }"
-                    >
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">
-                          <i class="tim-icons icon-lock-circle"> </i>
+                      <div
+                        class="input-group"
+                        [ngClass]="{ 'input-group-focus': focus2 === true }"
+                      >
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="tim-icons icon-email-85"> </i>
+                          </div>
                         </div>
+                        <input
+                          id="email"
+                          class="form-control"
+                          name="email"
+                          formControlName="email"
+                          placeholder="Email"
+                          type="email"
+                          (focus)="focus2 = true"
+                          (blur)="focus2 = false"
+                          [tooltip]="getEmailError()"
+                          triggers="manual"
+                          [isOpen]="submitted && !!email && email.invalid"
+                          container="body"
+                          autocomplete="email"
+                        />
                       </div>
-                      <input
-                        class="form-control"
-                        placeholder="Hasło"
-                        type="text"
-                        (focus)="focus2 = true"
-                        (blur)="focus2 = false"
-                      />
-                    </div>
-                    <div class="form-check text-left">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" />
-  
-                        <span class="form-check-sign"> </span> Rejestrując się, akceptujesz
-                        <a href="javascript:void(0)"> regulamin </a> .
-                      </label>
-                    </div>
-                  </form>
-                </div>
-                <div class="card-footer">
-                  <a
-                    class="btn btn-danger btn-round btn-lg"
-                    href="javascript:void(0)"
-                  >
-                    Dalej
-                  </a>
-                </div>
+                      <div
+                        class="input-group"
+                        [ngClass]="{ 'input-group-focus': focus3 === true }"
+                      >
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="tim-icons icon-lock-circle"> </i>
+                          </div>
+                        </div>
+                        <input
+                          id="password"
+                          class="form-control"
+                          name="password"
+                          formControlName="password"
+                          placeholder="Hasło"
+                          type="password"
+                          (focus)="focus3 = true"
+                          (blur)="focus3 = false"
+                          [tooltip]="getPasswordError()"
+                          triggers="manual"
+                          [isOpen]="submitted && !!password && password.invalid"
+                          container="body"
+                        />
+                      </div>
+                      <div class="form-check text-left">
+                        <label class="form-check-label">
+                          <input 
+                            formControlName="regulationsAccept"  
+                            class="form-check-input" 
+                            type="checkbox" 
+                            [tooltip]="getRegulationsError()"
+                            [isOpen]="submitted && !!regulationsAccept && regulationsAccept.invalid"
+                            container="body"
+                          />
+    
+                          <span class="form-check-sign"> </span> Rejestrując się, akceptujesz
+                          <a href="javascript:void(0)"> regulamin </a> .
+                        </label>
+                      </div>
+                    
+                  </div>
+                  <div class="card-footer">
+                    <button
+                      class="btn btn-danger btn-round btn-lg"
+                      type="submit"
+                    >
+                      Zarejestruj się
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

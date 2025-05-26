@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AlertModule } from "ngx-bootstrap/alert";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,7 @@ import { AlertModule } from "ngx-bootstrap/alert";
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent  {
+export class LoginComponent implements OnInit {
   focus: any;
   focus1: any;
   submitted = false;
@@ -27,12 +29,21 @@ export class LoginComponent  {
     visible: false,
   };
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {
+  constructor(
+    private fb: FormBuilder, 
+    private auth: AuthService, 
+    private route: ActivatedRoute,
+    public toastr: ToastrService
+  ) {
     this.loginForm = this.fb.group({
-      email: ['', [ Validators.required, Validators.email] ],
+      email: ['', [ 
+        Validators.required, 
+        Validators.email, 
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)] 
+      ],
       password: ['', Validators.required],
       remember: ['']
-    });
+    })
   }
 
   get email() {
@@ -47,6 +58,7 @@ export class LoginComponent  {
     if (!this.email?.touched) return '';
     if (this.email?.hasError('required')) return 'Email jest wymagany.';
     if (this.email?.hasError('email')) return 'Niepoprawny format email.';
+    if (this.email?.hasError('pattern')) return 'Niepoprawny format email.';
     return '';
   }
 
@@ -72,6 +84,18 @@ export class LoginComponent  {
     setTimeout(() => {
       this.alert.visible = false;
     }, 10000);
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const isLogout = params['registered'] === 'true';
+      if (isLogout) {
+        this.toastr.info('Użytkownik został zarejestrowany.\n Możesz się teraz zalogować!', 'Info', {
+          timeOut: 3000,
+          positionClass: 'toast-bottom-right',
+        });
+      }
+    });
   }
 
 }

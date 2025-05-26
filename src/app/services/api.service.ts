@@ -12,10 +12,19 @@ export class ApiService {
   private apiUrl = environment.apiUrl;
   private http = inject(HttpClient);
 
-  userLogin(credentials: { email: string; password: string }): Observable<any> {
+  userLogin(credentials: any): Observable<any> {
     return this.http.post<{ token: string, name: string }>(
         this.apiUrl + environment.loginEndpoint, 
         credentials
+    ).pipe(
+      // catchError(this.handleError)
+    );
+  }
+
+  registerUser(registerForm: any): Observable<any> {
+    return this.http.post<{ message: string }>(
+        this.apiUrl + environment.registerEndpoint, 
+        registerForm
     ).pipe(
       // catchError(this.handleError)
     );

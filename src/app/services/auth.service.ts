@@ -19,7 +19,7 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-  login(credentials: { email: string; password: string }) {
+  login(credentials: any) {
     this.dataService.userLogin(credentials).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.token);
@@ -29,6 +29,20 @@ export class AuthService {
       },
       error: (err) => {
         this.toastr.error(err.error != null ? err.error : err.message, 'Błąd', {
+          timeOut: 3000,
+          positionClass: 'toast-bottom-right',
+        });
+      }
+    });
+  }
+
+  register(registerForm: any) {
+    this.dataService.registerUser(registerForm).subscribe({
+      next: (response) => {
+        window.location.assign('/login?registered=true');
+      },
+      error: (response) => {
+        this.toastr.error(response.error != null ? response.error.message : response.message, 'Błąd', {
           timeOut: 3000,
           positionClass: 'toast-bottom-right',
         });
