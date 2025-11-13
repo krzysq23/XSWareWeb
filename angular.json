@@ -33,7 +33,8 @@
               "src/assets/css/nucleo-icons.css",
               "src/assets/css/custom.css",
               "src/assets/scss/blk-design-system.scss",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/devicon/devicon.min.css"
             ],
             "scripts": [],
             "outputMode": "static"
