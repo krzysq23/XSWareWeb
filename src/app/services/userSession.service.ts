@@ -26,6 +26,14 @@ export class UserSessionService {
     return this.cookieService.get('userData').split(';')[2];
   }
 
+  userData () {
+    return {
+      firstName: this.firstName(),
+      lastName: this.lastName(),
+      email: this.email()
+    }
+  }
+
   clear() {
     this.cookieService.delete('userData');
   }

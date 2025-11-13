@@ -9,14 +9,9 @@ import { UserSessionService } from '../../services/userSession.service';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
-  FirstName = "";
-  LastName = "";
-  Email = "";
-  Phone = "";
+  userData = {} as any;
 
   constructor(private userSession: UserSessionService) {
-    this.FirstName = userSession.firstName();
-    this.LastName = userSession.lastName();
-    this.Email = userSession.email();
+    this.userData = userSession.userData();
   }
 }
