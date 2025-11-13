@@ -56,7 +56,7 @@ export class AuthService {
     const token = localStorage.getItem('token');
     if(token) {
       this.loggedIn.next(true);
-      this.dataService.tokenValid().subscribe({
+      this.dataService.authStatus().subscribe({
         next: (response) => {
           // SUCCESS: Token is valid
         },

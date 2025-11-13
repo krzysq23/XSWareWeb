@@ -36,8 +36,8 @@ export class ApiService {
     );
   }
 
-  tokenValid() : Observable<any> {
-    return this.http.get(this.apiUrl + environment.tokenValidEndpoint).pipe();
+  authStatus() : Observable<any> {
+    return this.http.get(this.apiUrl + environment.authStatusEndpoint).pipe();
   }
 
   private handleError(resp: HttpErrorResponse) {
