@@ -26,9 +26,9 @@ export class AuthService {
       next: (response) => {
         localStorage.setItem('token', response.accessToken);
         const user = {
-          email: response.email,
-          firstName: response.firstName,
-          lastName: response.lastName
+          email: response.user.email,
+          firstName: response.user.userName,
+          login: response.user.login
         };
         this.userSession.setUser(user);
         this.loggedIn.next(true);

@@ -10,8 +10,8 @@ export class UserSessionService {
     private cookieService: CookieService
   ) {}
 
-  setUser(user: { email: string; firstName: string; lastName: string }) {
-    this.cookieService.set('userData', user.email + ";" + user.firstName + ";" + user.lastName, { secure: true, sameSite: 'Strict' });
+  setUser(user: { email: string; firstName: string; login: string }) {
+    this.cookieService.set('userData', user.email + ";" + user.firstName + ";" + user.login, { secure: true, sameSite: 'Strict' });
   }
 
   email() {
@@ -22,14 +22,14 @@ export class UserSessionService {
     return this.cookieService.get('userData').split(';')[1];
   }
 
-  lastName() {
+  login() {
     return this.cookieService.get('userData').split(';')[2];
   }
 
   userData () {
     return {
       firstName: this.firstName(),
-      lastName: this.lastName(),
+      login: this.login(),
       email: this.email()
     }
   }
