@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
-import { AuthService } from '../../services/auth.service';
-import { UserSessionService } from '../../services/userSession.service';
+import { AuthService } from '../../services/auth/auth.service';
+import { UserSessionService } from '../../services/session/userSession.service';
 
 @Component({
   selector: 'app-navbar',

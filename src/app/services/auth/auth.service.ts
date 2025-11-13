@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { ApiService } from '../services/api.service';
-import { UserSessionService } from '../services/userSession.service';
+import { ApiService } from '../api.service';
+import { UserSessionService } from '../session/userSession.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -24,7 +24,7 @@ export class AuthService {
   login(credentials: any) {
     this.dataService.userLogin(credentials).subscribe({
       next: (response) => {
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('token', response.accessToken);
         const user = {
           email: response.email,
           firstName: response.firstName,
@@ -33,12 +33,6 @@ export class AuthService {
         this.userSession.setUser(user);
         this.loggedIn.next(true);
         window.location.assign('/profile');
-      },
-      error: (err) => {
-        this.toastr.error(err.error != null ? err.error : err.message, 'Błąd', {
-          timeOut: 3000,
-          positionClass: 'toast-bottom-right',
-        });
       }
     });
   }
@@ -47,12 +41,6 @@ export class AuthService {
     this.dataService.registerUser(registerForm).subscribe({
       next: (response) => {
         window.location.assign('/login?registered=true');
-      },
-      error: (response) => {
-        this.toastr.error(response.error != null ? response.error.message : response.message, 'Błąd', {
-          timeOut: 3000,
-          positionClass: 'toast-bottom-right',
-        });
       }
     });
   }

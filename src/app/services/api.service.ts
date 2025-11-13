@@ -1,13 +1,19 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHandlerFn, HttpRequest, HttpEvent, HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environments';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
+
+  constructor(
+    public toastr: ToastrService,
+  ) {}
+
 
   private apiUrl = environment.apiUrl;
   private http = inject(HttpClient);
@@ -17,7 +23,7 @@ export class ApiService {
         this.apiUrl + environment.loginEndpoint, 
         credentials
     ).pipe(
-      // catchError(this.handleError)
+      catchError((err: HttpErrorResponse) => this.handleError(err))
     );
   }
 
@@ -26,7 +32,7 @@ export class ApiService {
         this.apiUrl + environment.registerEndpoint, 
         registerForm
     ).pipe(
-      // catchError(this.handleError)
+      catchError((err: HttpErrorResponse) => this.handleError(err))
     );
   }
 
@@ -34,12 +40,15 @@ export class ApiService {
     return this.http.get(this.apiUrl + environment.tokenValidEndpoint).pipe();
   }
 
-  private handleError(error: HttpErrorResponse) {
-    console.error('Wystąpił błąd:', error);
-    if (error.error instanceof ErrorEvent) {
-      return throwError(() => new Error(`Błąd klienta: ${error.error.message}`));
+  private handleError(resp: HttpErrorResponse) {
+    this.toastr.error(resp.error != null ? resp.error.message : resp.message, 'Błąd', {
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+    });
+    if (resp.error.error instanceof ErrorEvent) {
+      return throwError(() => new Error(`Błąd klienta: ${resp.error.error.message}`));
     } else {
-      return throwError(() => new Error(`Błąd serwera: ${error.status} ${error.message}`));
+      return throwError(() => new Error(`Błąd serwera: ${resp.error.status} ${resp.error.message}`));
     }
   }
   

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AlertModule } from "ngx-bootstrap/alert";

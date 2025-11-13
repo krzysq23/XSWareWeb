@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TabsModule } from "ngx-bootstrap/tabs";
-import { UserSessionService } from '../../services/userSession.service';
+import { UserSessionService } from '../../services/session/userSession.service';
 
 @Component({
   selector: 'app-profile',

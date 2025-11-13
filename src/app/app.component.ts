@@ -2,7 +2,7 @@ import { Component, Inject, Renderer2} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth/auth.service';
 
 import { CommonModule } from '@angular/common';
 import { Location } from "@angular/common";

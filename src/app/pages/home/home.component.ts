@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
-import { PlatformService } from '../../services/platform.service';
+import { PlatformService } from '../../services/session/platform.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
