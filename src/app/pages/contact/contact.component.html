@@ -46,63 +46,52 @@
                   <h1 class="profile-title text-left">Formularz kontaktowy</h1>
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label> Imię</label>
-                          <input class="form-control" type="text" value="Jan" />
+                          <label>Imię*</label>
+                          <input class="form-control" formControlName="name" type="text" placeholder="Jan" />
                         </div>
                       </div>
+
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label> Email </label>
-                          <input
-                            class="form-control"
-                            placeholder="jankowalski@email.com"
-                            type="email"
-                          />
+                          <label>Email*</label>
+                          <input class="form-control" formControlName="email" type="email" placeholder="jankowalski@email.com" />
                         </div>
                       </div>
                     </div>
+
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label> Telefon </label>
-                          <input
-                            class="form-control"
-                            type="text"
-                            placeholder="+48999888777"
-                          />
+                          <label>Telefon</label>
+                          <input class="form-control" formControlName="phone" type="text" placeholder="+48999888777" />
                         </div>
                       </div>
+
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label> Nazwa Firmy </label>
-                          <input
-                            class="form-control"
-                            type="text"
-                            placeholder="Firma XYZ"
-                          />
+                          <label>Nazwa Firmy</label>
+                          <input class="form-control" formControlName="company" type="text" placeholder="Firma XYZ" />
                         </div>
                       </div>
                     </div>
+
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label> Wiadomość </label>
-                          <input
-                            class="form-control"
-                            placeholder="Wpisz treść..."
-                            type="text"
-                          />
+                          <label>Wiadomość*</label>
+                          <textarea class="form-control" formControlName="message" placeholder="Wpisz treść..."></textarea>
                         </div>
                       </div>
                     </div>
+
                     <button
                       class="btn btn-danger btn-round float-right"
-                      placement="right"
                       type="submit"
+                      [disabled]="contactForm.invalid"
                     >
                       Wyślij
                     </button>

@@ -40,6 +40,15 @@ export class ApiService {
     return this.http.get(this.apiUrl + environment.authStatusEndpoint).pipe();
   }
 
+  sendContactForm(contactForm: any): Observable<any> {
+    return this.http.post(
+        this.apiUrl + environment.contactFormEndpoint, 
+        contactForm
+    ).pipe(
+      catchError((err: HttpErrorResponse) => this.handleError(err))
+    );
+  }
+
   private handleError(resp: HttpErrorResponse) {
     this.toastr.error(resp.error != null ? resp.error.message : resp.message, 'Błąd', {
       timeOut: 3000,
@@ -51,7 +60,6 @@ export class ApiService {
       return throwError(() => new Error(`Błąd serwera: ${resp.error.status} ${resp.error.message}`));
     }
   }
-  
   
 }
 

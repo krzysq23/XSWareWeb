@@ -4,4 +4,5 @@ export const environment = {
     loginEndpoint: "/auth/login",
     registerEndpoint: "/auth/register",
     authStatusEndpoint: "/auth/status",
+    contactFormEndpoint: "/data/contact"
 };
