@@ -18,5 +18,7 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     { path: 'portfolio', component: PortfolioComponent },
-    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+    // wildcard
+    { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
