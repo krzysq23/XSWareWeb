@@ -157,3 +157,105 @@
     text-align: center;
     letter-spacing: .5px;
 }
+
+/* Project Tab */
+.subtitle {
+  margin: 0 0 14px;
+  color: var(--text-muted);
+  font-size: 1.0rem;
+}
+
+.section-title {
+  margin: 28px 0 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(15,23,42,0.9);
+  border: 1px solid rgba(148,163,184,0.65);
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.links {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.88rem;
+}
+
+.link-chip {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,0.6);
+  background: rgba(15,23,42,0.85);
+}
+
+.link-chip svg {
+  width: 14px;
+  height: 14px;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.stack-card {
+  background: rgba(15,23,42,0.9);
+  border-radius: 14px;
+  border: 1px solid rgba(148,163,184,0.5);
+  padding: 10px 12px 12px;
+  font-size: 0.85rem;
+}
+
+.stack-card strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.86rem;
+}
+
+.stack-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.flow-step:last-child {
+  margin-bottom: 0;
+}
+
+.flow-step span.idx {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
