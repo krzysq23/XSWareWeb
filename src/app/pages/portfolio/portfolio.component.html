@@ -333,10 +333,26 @@
                     <hr class="line-success" />
                     <div class="cards">
                       <p class="subtitle">
-                        Strona www prezentująca ofertę firmy XsWare Solution. Zaprojektowana
-                        z naciskiem na czytelność, responsywność oraz lekkość działania – zarówno na
-                        desktopie, jak i urządzeniach mobilnych.
+                        Aplikacja webowa została zbudowana w Angularze, aby prezentować zakres usług i realizacji firmy XsWare Solution. 
+                        Projekt został zaprojektowany z naciskiem na przejrzyste UI oraz pełną responsywność, również na urządzeniach mobilnych. 
                       </p>
+
+                      <carousel>
+                        <slide>
+                          <img
+                            alt="First slide"
+                            class="d-block w-100"
+                            src="assets/img/xsware_screen_1.png"
+                          />
+                        </slide>
+                        <slide>
+                          <img
+                            alt="Second slide"
+                            class="d-block w-100"
+                            src="assets/img/xsware_screen_2.png"
+                          />
+                        </slide>
+                      </carousel>
 
                       <h3 class="section-title">Link do strony</h3>
                       <div class="links">
@@ -359,8 +375,7 @@
                       <h3 class="section-title">Zakres i funkcjonalności</h3>
                       <ul>
                         <li>Prezentacja firmy, usług i kompetencji technicznych.</li>
-                        <li>Responsywny layout oparty o Angular i nowoczesne komponenty UI.</li>
-                        <li>Integracja z podstronami i aplikacjami biznesowymi (np. Saldo Planer).</li>
+                        <li>Responsywny layout oparty o Angular i Bootstrap'a.</li>
                       </ul>
                       
                       <h3 class="section-title">Wykorzystane technologie</h3>
@@ -384,11 +399,35 @@
                     <hr class="line-success" />
                     <div class="cards">
                       <p class="subtitle">
-                        Aplikacja webowa do planowania i analizy salda finansowego. Frontend w React
-                        komunikuje się z warstwą REST API w Spring (Java), która z kolei korzysta z
+                        Aplikacja webowa "Saldo Planer" została stworzona do planowania i analizy salda finansowego. 
+                        Frontend został napisany w React i komunikuje się z warstwą REST API w Spring (Java), która z kolei korzysta z
                         serwisu w Kotlinie do pracy z bazą MySQL.
                       </p>
                       
+                      <carousel>
+                        <slide>
+                          <img
+                            alt="First slide"
+                            class="d-block w-100"
+                            src="assets/img/saldoplaner_screen_1.png"
+                          />
+                        </slide>
+                        <slide>
+                          <img
+                            alt="Second slide"
+                            class="d-block w-100"
+                            src="assets/img/saldoplaner_screen_2.png"
+                          />
+                        </slide>
+                        <slide>
+                          <img
+                            alt="Second slide"
+                            class="d-block w-100"
+                            src="assets/img/saldoplaner_screen_3.png"
+                          />
+                        </slide>
+                      </carousel>
+
                       <h3 class="section-title">Architektura rozwiązania</h3>
                       <div class="flow-step">
                         <span class="idx">1.</span>
@@ -417,6 +456,10 @@
                           skalowanie i izolację środowisk.
                         </span>
                       </div>
+
+                      <div class="text-center">
+                        <img src="assets/img/apps_architecture_2.png" class="rounded" alt="...">
+                      </div>
                   
                       <h3 class="section-title">Link do aplikacji</h3>
                       <div class="links">
@@ -428,6 +471,7 @@
                           </svg>
                           <span>Aplikacja: app.xsware.pl</span>
                         </a>
+                        <div class="card-body"><span>login: <strong>test</strong>, password: <strong>test1234</strong></span></div>
                       </div>
                       <div class="links">
                         <a class="btn btn-success btn-simple btn-round link-chip" href="https://api.xsware.pl/swagger-ui/index.html#/" target="_blank" rel="noreferrer">
@@ -438,6 +482,7 @@
                           </svg>
                           <span>XsWareApi · Swagger</span>
                         </a>
+                        <div class="card-body"><span>login: <strong>swagger</strong>, password: <strong>swagger</strong></span></div>
                       </div>
                       <div class="links">
                         <a class="btn btn-success btn-simple btn-round link-chip" href="http://connector.xsware.pl/swagger-ui/index.html#/" target="_blank" rel="noreferrer">
@@ -448,6 +493,7 @@
                           </svg>
                           <span>XsWareDbService · Swagger</span>
                         </a>
+                        <div class="card-body"><span>login: <strong>xsware</strong>, password: <strong>xsware1234</strong></span></div>
                       </div>
 
                       <h3 class="section-title">Github</h3>
